@@ -40,7 +40,7 @@
     </repository>
     <repository>
       <id>pex-repo</id>
-      <url>http://pex-repo.zachsthings.com</url>
+      <url>http://pex-repo.aoeu.xyz/</url>
     </repository>
   </repositories> 
   <dependencies>
