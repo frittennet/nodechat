@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.fredo121</groupId>
+  <artifactId>nodechat</artifactId>
+  <version>0.1</version>
+  <name>NodeChat</name>
+  <build>
+    <plugins>
+      <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <configuration>
+        <source>1.7</source>
+        <target>1.7</target>
+      </configuration>
+    </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <class-path>./lib/engine.io.jar ./lib/socket.io.jar ./lib/json.jar ./lib/okhttp.jar ./lib/okhttp-ws.jar ./lib/okio.jar</class-path>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <repositories>
+    <repository>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>maven central</id>
+      <name>Maven Repository Switchboard</name>
+      <layout>default</layout>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+    
+    <repository>
+      <id>pex-repo</id>
+      <url>http://pex-repo.zachsthings.com</url>
+    </repository>
+  </repositories> 
+  <dependencies>
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>1.8.7-R0.1-SNAPSHOT</version>
+    </dependency>
+<dependency>
+	<groupId>com.squareup.okhttp</groupId>
+	<artifactId>okhttp-ws</artifactId>
+	<version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20141113</version>
+    </dependency>
+    <dependency>
+      <artifactId>engine.io-client</artifactId>
+      <groupId>com.github.nkzawa</groupId>
+      <scope>system</scope>
+      <version>0.5.1</version>
+      <systemPath>${basedir}/lib/engine.io-client-0.5.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <artifactId>socket.io-client</artifactId>
+      <groupId>com.github.nkzawa</groupId>
+      <scope>system</scope>
+      <version>0.5.2</version>
+      <systemPath>${basedir}/lib/socket.io-client-0.5.2.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+  <groupId>com.squareup.okhttp</groupId>
+  <artifactId>okhttp</artifactId>
+  <version>2.4.0</version>
+</dependency>
+    <dependency>
+    <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp-ws</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+	<groupId>com.squareup.okio</groupId>
+	<artifactId>okio</artifactId>
+	<version>1.0.0</version>
+</dependency>
+    
+    
+    <dependency>
+      <groupId>ru.tehkode</groupId>
+      <artifactId>PermissionsEx</artifactId>
+      <version>1.22</version>
+    </dependency>
+    
+  </dependencies>
+</project>
+
+

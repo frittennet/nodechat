@@ -1,0 +1,4 @@
+node: 
+  url: 'mc.toothwit.ch'
+  port: 1337
+  name: 'Test'

@@ -1,0 +1,17 @@
+name: NodeChat
+main: de.fredo121.nodechat.main.NodeChat
+version: 0.1
+author: fredo121
+description: Bukkit NodeJs Chat Bridge by fredo121 and Houston9000 
+
+commands:
+  g:
+    description: Global chat 
+    permission: nodechat.use
+  global: 
+    description: Global chat 
+    permission: nodechat.use
+permissions:
+  nodechat.use:
+    description: Use NodeChat Commands
+    default: true
