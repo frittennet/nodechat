@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import de.fredo121.nodechat.main.NodeSocket; 
+import ch.toothwit.nodechat.main.NodeSocket; 
 import ru.tehkode.permissions.bukkit.PermissionsEx; 
 
 @SuppressWarnings("deprecation")
