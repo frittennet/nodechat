@@ -1,4 +1,4 @@
-package de.fredo121.nodechat.main;
+package ch.toothwit.nodechat.main;
 
 import java.net.URI;
 

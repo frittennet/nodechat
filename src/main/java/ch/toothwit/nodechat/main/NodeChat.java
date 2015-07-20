@@ -1,4 +1,4 @@
-package de.fredo121.nodechat.main;
+package ch.toothwit.nodechat.main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.fredo121.nodechat.events.PlayerEventListener;
+import ch.toothwit.nodechat.events.PlayerEventListener;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 

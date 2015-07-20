@@ -1,4 +1,4 @@
-package de.fredo121.nodechat.events;
+package ch.toothwit.nodechat.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
