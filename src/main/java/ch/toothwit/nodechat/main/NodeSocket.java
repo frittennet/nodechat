@@ -22,10 +22,8 @@ public class NodeSocket {
 		return instance; 
 	} 
 	
-	public NodeSocket(){
+	public NodeSocket(){ 
 		URI uri = URI.create("http://"+Settings.get().getServerUrl()+":"+Integer.toString(Settings.get().getServerPort())+"/"); 
-		
-		Bukkit.broadcastMessage(uri.getHost()+" => "+uri.getPort()); 
 		
 		socket = IO.socket(uri); 
 		
@@ -74,8 +72,8 @@ public class NodeSocket {
 		messageObject.put("group", group); 
 		
 		socket.emit("playerQuit", messageObject); 
-	}
-
+	} 
+	
 	public void disconnect() {
 		this.socket.close(); 
 	}
