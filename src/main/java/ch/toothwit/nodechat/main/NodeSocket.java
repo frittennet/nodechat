@@ -41,6 +41,7 @@ public class NodeSocket {
 			}
 		}).on("onPrivateMessage", new Emitter.Listener() { 
 			public void call(Object... arg0) { 
+				NodeChat.get().getLogger().info(""+arg0.length); 
 				if(arg0.length == 2){ 
 					Player p = Bukkit.getPlayer(arg0[0].toString()); 
 					
@@ -70,7 +71,7 @@ public class NodeSocket {
 	public void sendPrivateNodeMessage(String player, String otherPlayer, String group, String message){ 
 		JSONObject messageObject = new JSONObject();
 		messageObject.put("player", player);
-		messageObject.put("receivingPlayer", player); 
+		messageObject.put("receivingPlayer", otherPlayer); 
 		messageObject.put("group", group);
 		messageObject.put("message", message); 
 		
