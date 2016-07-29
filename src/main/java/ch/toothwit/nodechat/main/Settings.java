@@ -6,12 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
 
-public class Settings {
+public class Settings { 
 	private static Settings instance;
 	private FileConfiguration config;
 	private String serverUrl; 
 	private int serverPort; 
 	private String serverName; 
+	private String globalMessageSyntax; 
+	private String privateMessageSyntax; 
+	
 	
 	public static Settings get() {
 		if (instance == null) {
@@ -34,12 +37,16 @@ public class Settings {
 		serverUrl = config.getString("node.url");  
 		serverPort = config.getInt("node.port"); 
 		serverName = config.getString("node.name"); 
+		globalMessageSyntax = config.getString("messages.globalMessageSyntax"); 
+		privateMessageSyntax = config.getString("messages.privateMessageSyntax"); 
 	}
 
 	public void saveConfig() {
 		config.set("node.url", serverUrl);  
 		config.set("node.serverPort", serverPort); 
-		config.set("node.name", serverName);
+		config.set("node.name", serverName); 
+		config.set("messages.globalMessageSyntax", globalMessageSyntax); 
+		config.set("messages.privateMessageSyntax", privateMessageSyntax); 
 		
 		File gameConfig = new File(NodeChat.get().getDataFolder() + "/" + "config.yml");
 		try {
@@ -74,5 +81,23 @@ public class Settings {
 	public void setServerName(String serverName) {
 		this.serverName = serverName; 
 		this.saveConfig(); 
-	}
-}
+	} 
+	
+	public String getGlobalMessageSyntax(){ 
+		return globalMessageSyntax; 
+	} 
+	
+	public void setGlobalMessageSyntax(String syntax){  
+		this.globalMessageSyntax = syntax; 
+		this.saveConfig(); 
+	} 
+	
+	public String getPrivateMessageSyntax(){ 
+		return globalMessageSyntax; 
+	} 
+	
+	public void setPrivateMessageSyntax(String syntax){  
+		this.privateMessageSyntax = syntax; 
+		this.saveConfig(); 
+	} 
+} 
