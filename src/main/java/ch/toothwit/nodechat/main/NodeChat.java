@@ -44,6 +44,8 @@ public class NodeChat extends JavaPlugin {
 			else{ 
 				 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Settings.get().getGlobalMessageSyntax())); 
 			} 
+			
+			return true; 
 		}
 		else if(command.getName().equalsIgnoreCase("msg") || command.getName().equalsIgnoreCase("tell") || command.getName().equalsIgnoreCase("whisper")){ 
 			String message = ""; 
@@ -59,6 +61,8 @@ public class NodeChat extends JavaPlugin {
 			else{ 
 				 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Settings.get().getPrivateMessageSyntax())); 
 			} 
+			
+			return true; 
 		} 
 		return false;
 	}

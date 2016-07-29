@@ -11,6 +11,15 @@ commands:
   global: 
     description: Global chat 
     permission: nodechat.use
+  whisper: 
+    description: Sends Private message 
+    permission: nodechat.use
+  tell: 
+    description: Sends Private message 
+    permission: nodechat.use
+  msg: 
+    description: Sends Private message 
+    permission: nodechat.use
 permissions:
   nodechat.use:
     description: Use NodeChat Commands
