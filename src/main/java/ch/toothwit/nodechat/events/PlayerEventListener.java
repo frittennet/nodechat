@@ -10,9 +10,8 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import ch.toothwit.nodechat.main.NodeSocket; 
-import ru.tehkode.permissions.bukkit.PermissionsEx; 
-
+import ch.toothwit.nodechat.main.NodeSocket;
+import net.alpenblock.bungeeperms.BungeePerms; 
 @SuppressWarnings("deprecation")
 public class PlayerEventListener implements Listener { 
 	
@@ -21,7 +20,7 @@ public class PlayerEventListener implements Listener {
 		NodeSocket ns = NodeSocket.get(); 
 		if(ns.connected){ 
 			Player player = event.getPlayer(); 
-			ns.sendNodeMessage(player.getName(), ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getPrefix()), event.getMessage()); 
+			ns.sendNodeMessage(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), event.getMessage()); 
 			event.setCancelled(true); 
 		} 
 	} 
@@ -37,7 +36,7 @@ public class PlayerEventListener implements Listener {
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event){ 
 		Player player = event.getPlayer(); 
-		NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getPrefix()), false); 
+		NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), false); 
 		
 		event.setJoinMessage(""); 
 	} 
@@ -45,7 +44,7 @@ public class PlayerEventListener implements Listener {
 	@EventHandler 
 	public void onPlayerQuitEvent(PlayerQuitEvent event){ 
 		Player player = event.getPlayer();  
-		NodeSocket.get().sendQuit(player.getName(), ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getPrefix()));
+		NodeSocket.get().sendQuit(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()));
 	
 		event.setQuitMessage(""); 
 	} 
