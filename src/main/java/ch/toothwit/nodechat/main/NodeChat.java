@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import ch.toothwit.nodechat.events.PlayerEventListener;
-import net.alpenblock.bungeeperms.BungeePerms;
 
 public class NodeChat extends JavaPlugin {
 	private static NodeChat instance; 
@@ -38,7 +37,7 @@ public class NodeChat extends JavaPlugin {
 				
 				Player player = (Player)sender; 
 				
-				NodeSocket.get().sendNodeMessage(player.getDisplayName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), message); 
+				NodeSocket.get().sendNodeMessage(player.getDisplayName(), ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId())), message); 
 			}
 			else{ 
 				 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Settings.get().getGlobalMessageSyntax())); 
@@ -55,7 +54,7 @@ public class NodeChat extends JavaPlugin {
 				
 				Player player = (Player)sender; 
 				
-				NodeSocket.get().sendPrivateNodeMessage(player.getDisplayName(), args[0], ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), message); 
+				NodeSocket.get().sendPrivateNodeMessage(player.getDisplayName(), args[0], ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId())), message); 
 			}
 			else{ 
 				 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Settings.get().getPrivateMessageSyntax())); 

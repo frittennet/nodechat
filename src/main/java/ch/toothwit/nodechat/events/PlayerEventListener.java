@@ -10,8 +10,9 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import ch.toothwit.nodechat.main.NodeSocket;
-import net.alpenblock.bungeeperms.BungeePerms; 
+import ch.toothwit.nodechat.main.GroupUtility;
+import ch.toothwit.nodechat.main.NodeSocket; 
+
 @SuppressWarnings("deprecation")
 public class PlayerEventListener implements Listener { 
 	
@@ -20,14 +21,14 @@ public class PlayerEventListener implements Listener {
 		NodeSocket ns = NodeSocket.get(); 
 		if(ns.connected){ 
 			Player player = event.getPlayer(); 
-			ns.sendNodeMessage(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), event.getMessage()); 
+			ns.sendNodeMessage(player.getName(), ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId())), event.getMessage()); 
 			event.setCancelled(true); 
 		} 
 	} 
 	
 	@EventHandler (priority = EventPriority.HIGHEST) 
 	public void onAsyncPlayerChatEvent(AsyncPlayerChatEvent event){ 
-		NodeSocket ns = NodeSocket.get(); 
+		NodeSocket ns = NodeSocket.get();  
 		if(ns.connected){ 
 			event.setCancelled(true); 
 		} 
@@ -36,7 +37,7 @@ public class PlayerEventListener implements Listener {
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event){ 
 		Player player = event.getPlayer(); 
-		NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), false); 
+		NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId())), false); 
 		
 		event.setJoinMessage(""); 
 	} 
@@ -44,7 +45,7 @@ public class PlayerEventListener implements Listener {
 	@EventHandler 
 	public void onPlayerQuitEvent(PlayerQuitEvent event){ 
 		Player player = event.getPlayer();  
-		NodeSocket.get().sendQuit(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()));
+		NodeSocket.get().sendQuit(player.getName(), ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId()))); 
 	
 		event.setQuitMessage(""); 
 	} 

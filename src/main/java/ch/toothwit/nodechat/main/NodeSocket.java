@@ -11,8 +11,6 @@ import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket; 
 
-import net.alpenblock.bungeeperms.BungeePerms;; 
-
 public class NodeSocket {
 	private static NodeSocket instance = new NodeSocket(); 
 	private Socket socket; 
@@ -32,7 +30,7 @@ public class NodeSocket {
 				connected = true; 
 				socket.emit("setup", Settings.get().getServerName()); 
 				for(Player player : Bukkit.getOnlinePlayers()){
-					NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', BungeePerms.getInstance().getPermissionsManager().getUser(player.getUniqueId()).getPrefix()), true); 
+					NodeSocket.get().sendJoin(player.getName(), ChatColor.translateAlternateColorCodes('&', GroupUtility.retrieveGroup(player.getUniqueId())), true); 
 				} 
 			}
 		}).on("onMessage", new Emitter.Listener() { 

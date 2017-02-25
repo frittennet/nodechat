@@ -39,8 +39,8 @@
       <url>http://repo1.maven.org/maven2</url>
     </repository> 
     <repository>
-    	<id>bungeeperms-repo</id>
-    	<url>http://repo.wea-ondara.net/repository/public/</url>
+      <id>luck-repo</id>
+      <url>http://repo.lucko.me/</url>
     </repository> 
   </repositories> 
   <dependencies>
@@ -74,16 +74,16 @@
       <systemPath>${basedir}/lib/socket.io-client-0.5.2.jar</systemPath>
     </dependency>
     <dependency>
-      <groupId>net.alpenblock</groupId>
-      <artifactId>BungeePerms</artifactId>
-      <version>3.0-dev-47</version>
+      <groupId>me.lucko.luckperms</groupId>
+      <artifactId>luckperms-api</artifactId>
+      <version>3.0</version>
+      <scope>provided</scope>
     </dependency> 
-    
     <dependency>
-    <groupId>com.squareup.okhttp</groupId>
-    <artifactId>okhttp</artifactId>
-    <version>2.4.0</version>
-  </dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>2.4.0</version>
+    </dependency>
     <dependency>
     <groupId>com.squareup.okhttp</groupId>
       <artifactId>okhttp-ws</artifactId>
