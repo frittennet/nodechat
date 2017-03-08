@@ -14,17 +14,52 @@
         <target>1.7</target>
       </configuration>
     </plugin>
-    <plugin>
+    
+      <plugin> 
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <class-path>./lib/engine.io.jar ./lib/socket.io.jar ./lib/json.jar ./lib/okhttp.jar ./lib/okhttp-ws.jar ./lib/okio.jar</class-path>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <excludes>
+                  <exclude>org.spigotmc:spigot-api</exclude> 
+                  <exclude>org.bukkit:craftbukkit</exclude> 
+                  <exclude>me.lucko.luckperms:luckperms-api</exclude> 
+                  <exclude>junit:junit</exclude> 
+                  <exclude>net.md-5:bungeecord-chat</exclude> 
+                  <exclude>commons-lang:commons-lang</exclude> 
+                  <exclude>com.googlecode.json-simple </exclude> 
+                  <exclude>org.hamcrest:hamcrest-core </exclude> 
+                  <exclude>org.avaje:ebean </exclude> 
+                  <exclude>com.google.guava:guava </exclude> 
+                  <exclude>com.google.code.gson:gson </exclude> 
+                  <exclude>javax.persistence:persistence-api </exclude> 
+                  <exclude>org.yaml:snakeyaml </exclude> 
+                </excludes> 
+              </artifactSet> 
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/LICENSE*</exclude>
+                    <exclude>META-INF/NOTICE*</exclude>
+                    <exclude>*.txt</exclude>
+                  </excludes>
+                </filter>
+              </filters> 
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> 
     </plugins>
   </build>
   <repositories>
@@ -50,49 +85,15 @@
       <version>1.8.7-R0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
-	  <groupId>com.squareup.okhttp</groupId>
-	  <artifactId>okhttp-ws</artifactId>
-	  <version>2.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20141113</version>
-    </dependency>
-    <dependency>
-      <artifactId>engine.io-client</artifactId>
-      <groupId>com.github.nkzawa</groupId>
-      <scope>system</scope>
-      <version>0.5.1</version>
-      <systemPath>${basedir}/lib/engine.io-client-0.5.1.jar</systemPath>
-    </dependency>
-    <dependency>
+      <groupId>io.socket</groupId>
       <artifactId>socket.io-client</artifactId>
-      <groupId>com.github.nkzawa</groupId>
-      <scope>system</scope>
-      <version>0.5.2</version>
-      <systemPath>${basedir}/lib/socket.io-client-0.5.2.jar</systemPath>
+      <version>0.8.3</version>
     </dependency>
     <dependency>
       <groupId>me.lucko.luckperms</groupId>
       <artifactId>luckperms-api</artifactId>
       <version>3.0</version>
       <scope>provided</scope>
-    </dependency> 
-    <dependency>
-      <groupId>com.squareup.okhttp</groupId>
-      <artifactId>okhttp</artifactId>
-      <version>2.4.0</version>
-    </dependency>
-    <dependency>
-    <groupId>com.squareup.okhttp</groupId>
-      <artifactId>okhttp-ws</artifactId>
-      <version>2.3.0</version>
-    </dependency>
-    <dependency>
-	  <groupId>com.squareup.okio</groupId>
-	  <artifactId>okio</artifactId>
-	  <version>1.0.0</version>
     </dependency> 
   </dependencies>
 </project>

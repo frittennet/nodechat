@@ -5,11 +5,12 @@ import java.net.URI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.github.nkzawa.emitter.Emitter;
-import com.github.nkzawa.socketio.client.IO;
-import com.github.nkzawa.socketio.client.Socket; 
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 public class NodeSocket {
 	private static NodeSocket instance = new NodeSocket(); 
@@ -58,39 +59,71 @@ public class NodeSocket {
 	} 
 	
 	public void sendNodeMessage(String player, String group, String message){ 
-		JSONObject messageObject = new JSONObject();
-		messageObject.put("player", player);
-		messageObject.put("group", group);
-		messageObject.put("message", message); 
-		
-		socket.emit("sendMessage", messageObject); 
+		JSONObject messageObject = new JSONObject(); 
+		try
+        {
+            messageObject.put("player", player); 
+            messageObject.put("group", group); 
+            messageObject.put("message", message); 
+            
+            socket.emit("sendMessage", messageObject); 
+        }
+        catch (JSONException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
 	} 
 	
 	public void sendPrivateNodeMessage(String player, String otherPlayer, String group, String message){ 
 		JSONObject messageObject = new JSONObject();
-		messageObject.put("player", player);
-		messageObject.put("receivingPlayer", otherPlayer); 
-		messageObject.put("group", group);
-		messageObject.put("message", message); 
-		
-		socket.emit("sendPrivateMessage", messageObject); 
+		try
+        {
+            messageObject.put("player", player); 
+            messageObject.put("receivingPlayer", otherPlayer); 
+            messageObject.put("group", group);
+            messageObject.put("message", message); 
+            
+            socket.emit("sendPrivateMessage", messageObject); 
+        }
+        catch (JSONException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
 	}
 	
 	public void sendJoin(String player, String group, boolean silent){
 		JSONObject messageObject = new JSONObject();
-		messageObject.put("player", player);
-		messageObject.put("group", group); 
-		messageObject.put("silent", silent); 
-		
-		socket.emit("playerJoin", messageObject); 
+		try
+        {
+            messageObject.put("player", player); 
+            messageObject.put("group", group); 
+            messageObject.put("silent", silent); 
+            
+            socket.emit("playerJoin", messageObject); 
+        }
+        catch (JSONException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
 	}
 	
 	public void sendQuit(String player, String group){
 		JSONObject messageObject = new JSONObject();
-		messageObject.put("player", player);
-		messageObject.put("group", group); 
-		
-		socket.emit("playerQuit", messageObject); 
+		try
+        {
+            messageObject.put("player", player); 
+            messageObject.put("group", group); 
+            
+            socket.emit("playerQuit", messageObject); 
+        }
+        catch (JSONException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
 	} 
 	
 	public void disconnect() {

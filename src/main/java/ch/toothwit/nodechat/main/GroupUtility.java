@@ -4,9 +4,8 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 
-import me.lucko.luckperms.LuckPerms;
-import me.lucko.luckperms.api.LuckPermsApi;
-import me.lucko.luckperms.api.MetaUtils;
+import me.lucko.luckperms.LuckPerms; 
+import me.lucko.luckperms.api.MetaUtils; 
 
 public class GroupUtility
 {

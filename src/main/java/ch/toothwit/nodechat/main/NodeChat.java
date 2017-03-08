@@ -32,7 +32,7 @@ public class NodeChat extends JavaPlugin {
 			String message = ""; 
 			if(args.length >= 1){
 				for(int n=0;n<args.length;n++){
-					message += args[n]; 
+					message += args[n]+" "; 
 				}
 				
 				Player player = (Player)sender; 
